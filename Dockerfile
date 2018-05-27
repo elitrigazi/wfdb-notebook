@@ -9,3 +9,4 @@ RUN cd /root/wfdb-10.6.0 && \
     ./configure && make install && make check
 USER $NB_UID
 
+RUN mkdir /home/$NB_USER/database/ && python -c "import wfdb; wfdb.dl_database('vfdb', '/home/$NB_USER/database/vfdb', records='all', annotators='all', keep_subdirs=True, overwrite=True)"
